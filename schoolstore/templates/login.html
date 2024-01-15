@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% block content %}
+
+<form action="login" method="post">
+{% csrf_token %}
+    <input type="text" name="uname" placeholder="Username"><br>
+    <input type="password" name="pwd1" placeholder="Password"><br>
+  <input type="submit">
+    <li class="active"><a href="register">Register</a></li>
+
+  </form>
+
+{% endblock %}
+</body>
+</html>

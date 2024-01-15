@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>-->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        //create arrays to store option and values
+        var continents = [
+            {display: "BSC Computer Science", value: "asia" },
+            {display: "Btech", value: "africa" },
+
+        ];
+
+        var oceans = [
+            {display: "BSC Mathematics", value: "pacific" },
+            {display: "BSC statitics", value: "atlantic" },
+
+        ];
+		var ocea = [
+            {display: "BA English", value: "pacifi" },
+            {display: "BA Litreature", value: "atlantc" },
+
+        ];
+
+        var oceanss = [
+            {display: "BSC Botony", value: "pacific" },
+            {display: "BSC Zoology", value: "atlantic" },
+
+        ];
+		 var oc= [
+            {display: "BA History", value: "pacific" },
+            {display: "BA Malayalam", value: "atlantic" },
+
+        ];
+        var oct= [
+            {display: "BA History", value: "pacific" },
+            {display: "BA Malayalam", value: "atlantic" },
+
+        ];
+
+        //If parent option is changed
+        $("#parent_selection").change(function() {
+            var parent = $(this).val(); //get option value from parent
+            switch(parent){ //using switch compare selected option and populate child
+                case 'continents':
+                    $('#child_selection').attr('disabled', false);
+                    list(continents);
+                    break;
+                case 'oceans':
+                    $('#child_selection').attr('disabled', false);
+                    list(oceans);
+                    break;
+				case 'ocea':
+                    $('#child_selection').attr('disabled', false);
+                    list(ocea);
+                    break;
+				case 'oceanss':
+                    $('#child_selection').attr('disabled', false);
+                    list(oceanss);
+                    break;
+				case 'oc':
+                    $('#child_selection').attr('disabled', false);
+                    list(oc);
+                    break;
+                case 'oct':
+                    $('#child_selection').attr('disabled', false);
+                    list(oc);
+                    break;
+                default: //default child option is blank
+                    $("#child_selection").html('');
+                    $('#child_selection').attr("disabled", true);
+                    break;
+            }
+        });
+
+        //function to populate child select box
+        function list(array_list) {
+            $("#child_selection").html(""); //reset child options
+            $(array_list).each(function (i) { //populate child options
+                $("#child_selection").append("<option value='" + array_list[i].value + "'>" + array_list[i].display + "</option>");
+            });
+        }
+    });
+    </script>
+</head>
+<body>
+<form action="gg" method="post">
+{% csrf_token %}
+    <li> Hello {{user.username}}</li>
+    <input type="text" name="uname" placeholder="Name"><br>
+    <input type="date" name="datee" placeholder="DOB"><br>
+    <input type="number" name="age" placeholder="Age"><br>
+    Gender<br>
+    <input type="radio" name="gender" value="male">Male<br>
+    <input type="radio" name="gender" value="female">Female<br>
+    <input type="tel" name="ph" placeholder="Phone"><br>
+     <input type="email" name="mail" placeholder="Email"><br>
+     <input type="address" name="adress" placeholder="Address"><br>
+     Material provided<br>
+
+    <input type="checkbox" id="d" name="debit" value="debit"><label for="debit">Debit</label><br>
+
+     <input type="checkbox" id="dp" name="paper" value="notebook"><label for="paper">Exam Paper</label><br>
+     <input type="checkbox" id="dl" name="de" value="pen"><label for="dl">Notebook</label><br>
+      <input type="checkbox" id="dlb" name="dep" value="exam paper"><label for="dep">Pen</label><br>
+
+
+
+      Purpose<br>
+
+    <select name="parent_selecti" id="parent_selecti">
+        <option value="" selected="selected">--Select Purpose--</option>
+       <option value="">Enquiry</option>
+
+           <option value="pl">Place Order</option>
+         <option value="rt">Return</option>
+
+        </select>
+<br>
+        <select name="parent_selection" id="parent_selection">
+            <option value="">-- Department --</option>
+            <option value="continents">Computer science</option>
+            <option value="oceans">Mathematics</option>
+			 <option value="ocea">English</option>
+			 <option value="oceanss">Biology</option>
+			 <option value="oc">History</option>
+
+
+        </select>
+
+        <select name="child_selection" id="child_selection" disabled="disabled"/><br>
+
+
+
+
+
+
+<br>
+
+<input type="submit">
+
+<a href="{% url 'logout' %}" class="btn btn-secondary btn-block my_custom_button" style="width:500px;">Logout</a>
+
+  </form>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
